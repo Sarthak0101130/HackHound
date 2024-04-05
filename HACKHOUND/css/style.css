@@ -465,7 +465,7 @@ h1, h2, h3, h4, h5,
 }
 
 .site-navbar .site-navigation.border-bottom {
-  border-bottom: 1px solid #f3f3f4 !important;
+  border-bottom: 1px solid #eda392 !important;
 }
 
 .site-navbar .site-navigation .site-menu {
@@ -473,7 +473,7 @@ h1, h2, h3, h4, h5,
 }
 
 .site-navbar .site-navigation .site-menu .active > a span {
-  color: #ea728c;
+  color: #f8f8f8;
   border-radius: 30px;
   display: inline-block;
   padding: 5px 20px;
@@ -2399,7 +2399,7 @@ h1, h2, h3, h4, h5,
 }
 
 .typed-words {
-  color: #ea728c;
+  color: #ffffff;
 }
 
 .comment-form-wrap {
