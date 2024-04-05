@@ -25,9 +25,7 @@
   <link rel="stylesheet" href="css/rangeslider.css">
 
   <link rel="stylesheet" href="css/style.css">
-
-  
-
+  <script src="api_database.js"></script>
 
 
   <style>
@@ -134,7 +132,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Total Marks</span>
                     </div>
-                    <input id = "total marks" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                    <input id = "total_marks" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                   </div>
                   
                 
@@ -143,7 +141,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Select Board </label>
                     </div>
-                    <select class="custom-select" id="time">
+                    <select class="custom-select" id="board">
                       <option selected>Choose Board</option>
                       <option value="MAHARASHTRA BOARD">Maharashtra State Board of Secondary and Higher Secondary Education</option>
                       <option value="GUJARAT BOARD">Gujarat Secondary and Higher Secondary Education Board</option>
@@ -196,7 +194,8 @@
 
                   <div class="row form-group">
                     <div class="col-md-11">
-                      <button type="Submit" class="btn btn-secondary btn-sm" value="submit" style="background-color: rgb(85, 85, 222);border-radius: 20px;border-color: rgb(85, 85, 222);">Submit</button>
+                      <button id="submitButton" type="Submit" class="btn btn-secondary btn-sm" value="submit" style="background-color: rgb(85, 85, 222);border-radius: 20px;border-color: rgb(85, 85, 222);" >Submit</button>
+
                     </div>
                   </div>
 
@@ -327,11 +326,50 @@
       })
     })
   </script>
-
+<script>
+  // Function to send CSV file to the API
+  const baseUrl12 = 'http://localhost:2000';
+  async function sendCSVFileToAPI(board, total_marks) {
+    try {
+      const formData = new FormData();
+      
+      // Append the CSV file to the FormData object
+      formData.append('Board', board);
+      formData.append('total_marks', total_marks);
+  
+      const response = await fetch(`${baseUrl12}/result`, {
+        method: 'POST',
+        body: formData
+      });
+  
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+  
+      const responseData = await response.json();
+      document.getElementById("total_marks").innerText = JSON.stringify(responseData); // This will log the response from your Python API
+    } catch (error) {
+      console.error('Error sending variables to API:', error);
+    }
+  }
+  
+  // Function to handle button click
+  function handleButtonClick() {
+    var board = document.getElementById("board").value;
+    var total_marks = document.getElementById("total_marks").value;
+    
+    // Call the sendCSVFileToAPI function with the retrieved values
+    sendCSVFileToAPI(board, total_marks);
+  }
+  
+  // Attach event listener to the button
+  document.getElementById("submitButton").addEventListener("click", handleButtonClick);
+</script>
 
 
 
   <script src="js/main.js"></script>
+  <script src="api_database.js"></script>
 
 </body>
 

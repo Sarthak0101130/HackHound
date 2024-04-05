@@ -18,7 +18,6 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 
-const submit = document.getElementById("submit");
 const signup_submit = document.getElementById("signup_submit");
 
 
@@ -39,12 +38,10 @@ signup_submit.addEventListener("click", function (event) {
         email : email,
         name: name,
         mobile: mobile,
-        password:password
-
       })
 
       alert("User Signed Up succesfully")
-      if(email && password){
+      if(email){
         window.location.href = "login.html";
       }
     })
