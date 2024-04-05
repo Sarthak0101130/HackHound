@@ -34,7 +34,10 @@ submit.addEventListener("click", function (event) {
         set(ref(database, 'users/' + user.uid),{
           email : email
         })
-        alert("User Logged In succesfully")
+        // alert("User Logged In succesfully")
+        if(email && password){
+          window.location.href = "details_form.html";
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
