@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5,
 }
 
 .btn.btn-outline-primary {
-  color: #ea728c;
+  color: #ffffff;
   border-width: 2px;
 }
 
@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5,
 
 .btn.btn-outline-white:hover {
   background: #fff;
-  color: #ea728c !important;
+  color: #fdfdfd;
 }
 
 .btn.btn-md {
