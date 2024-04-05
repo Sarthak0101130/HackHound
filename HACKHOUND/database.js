@@ -44,6 +44,9 @@ signup_submit.addEventListener("click", function (event) {
       })
 
       alert("User Signed Up succesfully")
+      if(email && password){
+        window.location.href = "login.html";
+      }
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -53,25 +56,4 @@ signup_submit.addEventListener("click", function (event) {
 });
 
 
-submit.addEventListener("click", function (event) {
-  event.preventDefault();
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      
-      set(ref(database, 'users/' + user.uid),{
-        email : email
-      })
-
-      alert("User Logged In succesfully")
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage)
-    });
-});
